@@ -63,4 +63,63 @@ This repository contains materials and assignments for the "5-Day AI Agents Inte
 
 ---
 
+## Day 2: Agent Tools & Interoperability with Model Context Protocol (MCP)
+
+### Today’s Assignments
+
+1.  **Complete Unit 2 - “Agent Tools & Interoperability with Model Context Protocol (MCP)”**:
+    *   Listen to the summary podcast episode for this unit, created by NotebookLM: [https://www.youtube.com/watch?v=Cr4NA6rxHAM](https://www.youtube.com/watch?v=Cr4NA6rxHAM)
+    *   To complement the podcast, read the “Agent Tools & Interoperability with Model Context Protocol (MCP)” whitepaper: [https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp)
+
+### Podcast Summary: Whitepaper Companion - Agent Tools & Interoperability with MCP (Google x Kaggle)
+
+-   **Core Problem & Shift**: Foundation models are isolated "brains" (pattern-matching from training data); need "tools" (senses/actuators) to perceive/act in real world for agentic AI, especially in enterprises.
+
+-   **Historical Challenge**: Integrating N models with M tools created fragmented, non-scalable custom connectors (N*M explosion).
+
+-   **Solution: Model Context Protocol (MCP)**: Open standard (2024) for unified, plug-and-play tool integration; decouples agent reasoning from tool execution.
+
+-   **Tool Types**:
+    -   **Function Tools**: Developer-defined (e.g., Python functions); use detailed docstrings/schemas for inputs/outputs (contract).
+    -   **Built-in Tools**: Implicitly provided by model provider (e.g., Gemini's Google Search grounding, code execution, URL fetching).
+    -   **Agent Tools**: Invoke sub-agents hierarchically (delegation, not full handoff; main agent stays in control).
+
+-   **Broader Tool Taxonomy**:
+    -   Information retrieval (fetch data).
+    -   Action execution (make changes, e.g., send email).
+    -   System API integration (connect software).
+    -   Human-in-the-loop (seek permission/clarification).
+
+-   **Best Practices for Tool Design**:
+    -   Documentation essential: Clear, descriptive names/descriptions/parameters fed into LLM context.
+    -   Focus on tasks/actions (e.g., "Create bug"), not implementation/how-to.
+    -   Publish high-level tasks, not raw APIs (encapsulate complexity; avoid dozens of parameters).
+    -   Concise outputs: Summaries, confirmations, or URIs/references (e.g., via ADK artifact service) to prevent context bloat (tokens, latency, degraded reasoning).
+    -   Handle errors instructively: Schema validation; descriptive messages with recovery guidance (e.g., "Rate limit exceeded; retry in 15s").
+
+-   **MCP Technical Details**:
+    -   **Transports**: Local IPC (efficient, same-machine); Streamable HTTP (distributed, supports SSE for long-running tools).
+    -   **Primitives**: Tools (core focus); resources/prompts (less adopted).
+    -   **Tool Definition**: JSON schema (name, description, input/output schemas; e.g., get_stock_price with symbol/date).
+    -   **Results**: Structured (JSON per schema) or unstructured (text, files, URIs).
+    -   **Errors**: Protocol-level (e.g., invalid method); execution-level (flag + descriptive message for LLM recovery).
+
+-   **Strategic Benefits**:
+    -   Accelerates development; fosters reusable ecosystem (e.g., public MCP registries for certified tools).
+    -   Enables dynamic discovery (agents find/use new tools at runtime).
+    -   Architectural flexibility: Modular systems, agentic AI mesh (networks of agents/tools).
+
+-   **Challenges & Mitigations**:
+    -   **Context Bloat**: Loading many tool definitions overwhelms LLM; solve with tool retrieval (RAG-like semantic search: index tools, load only top 3-5 relevant ones).
+    -   **Security Gaps**: MCP lacks built-in auth/authz; risks like confused deputy (prompt injection escalates privileges via trusted AI).
+    -   **Enterprise Fix**: Wrap MCP in API gateways (e.g., Apigee): Handle auth, fine-grained authz, rate limiting, logging, input filtering.
+
+**Takeaway**: Tools empower models to act; MCP standardizes connections; apply best practices for reliability; layer enterprise security for safe adoption. Check whitepaper and 5-Day AI Agents Intensive for hands-on.
+
+2.  **Complete these codelabs on Kaggle**:
+    *   Explore new ways to add tools to extend what your agents can do: [https://www.kaggle.com/code/kaggle5daysofai/day-2a-agent-tools](https://www.kaggle.com/code/kaggle5daysofai/day-2a-agent-tools)
+    *   Explore best practices for tools, including using MCP and long-running operations: [https://www.kaggle.com/code/kaggle5daysofai/day-2b-agent-tools-best-practices](https://www.kaggle.com/code/kaggle5daysofai/day-2b-agent-tools-best-practices)
+
+---
+
 *More content for remaining days will be updated as it becomes available.*

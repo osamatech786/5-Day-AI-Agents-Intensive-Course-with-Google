@@ -181,7 +181,7 @@ This repository contains materials and assignments for the "5-Day AI Agents Inte
     -   Traditional software: Delivery truck (fixed routes, explicit crashes); agents: F1 car (dynamic judgments, insidious failures).
     -   Failures: Algorithmic bias (e.g., resume screening amplifies biases); factual hallucinations (confident inventions); performance/concept drift (outdated assumptions); emergent behaviors (superstitions/loopholes).
 
--   **Evaluation Pillars** (What to Measure)**:
+-   **Evaluation Pillars (What to Measure)**:
     -   **Correctness**: Factuality, safety, policy adherence.
     -   **Usefulness**: Helpfulness, relevance, timeliness.
     -   **Efficiency**: Latency, cost, resource use.
@@ -255,3 +255,7 @@ This repository contains materials and assignments for the "5-Day AI Agents Inte
 2.  **Complete these codelabs on Kaggle**:
     *   Explore how to use A2A Protocol to have agents interact with each other: [https://www.kaggle.com/code/kaggle5daysofai/day-5a-agent2agent-communication](https://www.kaggle.com/code/kaggle5daysofai/day-5a-agent2agent-communication)
     *   [Optional] Deploy your agent to Agent Engine on Google Cloud: [https://www.kaggle.com/code/kaggle5daysofai/day-5b-agent-deployment](https://www.kaggle.com/code/kaggle5daysofai/day-5b-agent-deployment)
+
+---
+
+**Repo Link:** [https://github.com/osamatech786/5-Day-AI-Agents-Intensive-Course-with-Google](https://github.com/osamatech786/5-Day-AI-Agents-Intensive-Course-with-Google)
